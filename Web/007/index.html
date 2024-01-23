@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>小孙同学</title>
+	<title>小郑老师</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<style>
@@ -58,8 +58,8 @@
 		}
 
 		.element img {
-			width: 100px;
-			height: 100px;
+			width: 180px;
+			height: 180px;
 		}
 
 		.element .number {
@@ -175,26 +175,27 @@
 	<script src="js/CSS3DRenderer.js"></script>
 
 	<div id="container"></div>
-	<audio autoplay="" loop="">
-		<source src="http://www.ytmp3.cn/down/72794.mp3">
+	<audio controls="controls" loop>
+		<source src="music/gaobaiqiqiu.flac">
 	</audio>
 	<div id="menu">
-		<button id="table">表格</button>
-		<button id="sphere">球球</button>
-		<button id="helix">螺旋</button>
-		<button id="grid">格子</button>
+		<button id="table">I</button>
+		<button id="sphere">love</button>
+		<button id="helix">❤️</button>
+		<button id="grid">you</button>
 	</div>
 
 	<div class="show_info animated" style="display:none;">
 		<div class="info_my">
-			<img width=200px src="img/c.png" />
+			<img width=300px height="350" src="img/43.JPG" id="info_my_img"/>
 		</div>
-		<div class="intro">天气好冷，我的心是冰冰的！</div>
+		<div class="intro">此时此刻，我的心里全是 love 你！</div>
 	</div>
 
 	<script>
 		var personArray = new Array;
 		var CurPersonNum = 0;
+		var iteraNum = 1;
 		// animate
 		var _in = ['bounceIn', 'bounceInDown', 'bounceInLeft', 'bounceInRight', 'bounceInUp', 'fadeIn', 'fadeInDown', 'fadeInDownBig', 'fadeInLeft', 'fadeInLeftBig', 'fadeInRight', 'fadeInRightBig', 'fadeInUp', 'fadeInUpBig', 'rotateIn', 'rotateInDownLeft', 'rotateInDownRight', 'rotateInUpLeft', 'rotateInUpRight', 'slideInDown', 'slideInLeft', 'slideInRight'];
 		var _out = ['bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'rotateOutUpLeft', 'rotateOutUpRight', 'slideOutDown', 'slideOutLeft', 'slideOutRight'];
@@ -207,13 +208,16 @@
 			if (CurPersonNum >= personArray.length) {
 				CurPersonNum = 0;
 			}
+
+            itera();
+
 			$('.show_info').show();
 			$('.show_info').addClass(_in[rand_in]);
 			setTimeout(function () {
 				$('.show_info').removeClass(_in[rand_in]);
 				// 更改展示的图片
-				var img = document.getElementsByClassName('element')[CurPersonNum].getElementsByTagName('img')[0];
-				img.setAttribute('src', 'img/a.png');
+				// var img = document.getElementsByClassName('element')[CurPersonNum].getElementsByTagName('img')[0];
+				// img.setAttribute('src', 'img/45.JPG');
 				++CurPersonNum;
 				setTimeout(function () {
 					$('.show_info').addClass(_out[rand_out]);
@@ -226,10 +230,8 @@
 		}, 4500);
 
 		// 生成虚拟数据
-		for (var i = 0; i < 199; i++) {
-			personArray.push({
-				image: "img/a.png"
-			});
+		for (var i = 1; i < 77; i++) {
+            personArray.push({image: "img/" + i + ".JPG"});
 		}
 
 		var table = new Array;
@@ -577,8 +579,7 @@
 				.to({}, duration * 2)
 				.onUpdate(render)
 				.start();
-
-		}
+        }
 
 		function onWindowResize() {
 
@@ -607,6 +608,15 @@
 			render();
 
 		}
+
+        function itera() {
+            var infoMy = document.getElementById('info_my_img');
+            infoMy.src = "img/" + iteraNum + ".JPG";
+            if (iteraNum >= personArray.length) {
+                iteraNum = 1;
+            }
+            iteraNum++;
+        }
 
 		function render() {
 
